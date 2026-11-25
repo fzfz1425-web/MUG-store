@@ -1,24 +1,507 @@
+
 const WHATSAPP_NUMBER = "966597816556";
+
+/* =========================
+   منتجات MUG الحقيقية
+========================= */
+
 const products = [
-  ...[1,2,3,4].map((n)=>({id:`pottery-${n}`,name:`كوب فخاري ${String(n).padStart(2,"0")}`,category:"pottery",categoryName:"فخاري",price:[55,65,45,75][n-1],image:`images/pottery-0${n}.jpg`,description:"كوب فخاري بتصميم مميز ولمسة دافئة."})),
-  ...[1,2,3,4].map((n)=>({id:`glass-${n}`,name:`كوب زجاجي ${String(n).padStart(2,"0")}`,category:"glass",categoryName:"زجاجي",price:[25,35,40,45][n-1],image:`images/glass-0${n}.jpg`,description:"كوب زجاجي أنيق وعملي."})),
-  ...[1,2,3,4].map((n)=>({id:`printed-${n}`,name:`كوب مطبوع ${String(n).padStart(2,"0")}`,category:"printed",categoryName:"مطبوع",price:[35,45,50,55][n-1],image:`images/printed-0${n}.jpg`,description:"كوب بطباعة وتصميم يضيف لمسة شخصية."})),
-  ...[1,2,3,4].map((n)=>({id:`carved-${n}`,name:`كوب منحوت ${String(n).padStart(2,"0")}`,category:"carved",categoryName:"منحوت",price:[60,75,85,95][n-1],image:`images/carved-0${n}.jpg`,description:"كوب بتفاصيل ونقوش فنية."})),
-  ...[1,2,3,4].map((n)=>({id:`gifts-${n}`,name:`بكج هدايا ${String(n).padStart(2,"0")}`,category:"gifts",categoryName:"بكج هدايا",price:[85,110,125,150][n-1],image:`images/gifts-0${n}.jpg`,description:"بكج هدايا يحتوي على كوب وتغليف أنيق."}))
+  // الأكواب الفخارية
+  {
+    id: "pottery-1",
+    name: "الكوب الفخاري الأخضر",
+    category: "pottery",
+    categoryName: "فخاري",
+    price: 65,
+    image: "IMG_2173.JPG",
+    description: "كوب أخضر بقاعدة بيضاء وصحن، يحمل عبارة صباحية ملهمة عن الأماني والسعي."
+  },
+  {
+    id: "pottery-2",
+    name: "الكوب الفخاري الأزرق",
+    category: "pottery",
+    categoryName: "فخاري",
+    price: 65,
+    image: "IMG_2172.JPG",
+    description: "كوب أزرق بقاعدة رملية وصحن، بتصميم هادئ وعبارة صباحية ملهمة."
+  },
+  {
+    id: "pottery-3",
+    name: "كوب الرموز الملونة",
+    category: "pottery",
+    categoryName: "فخاري",
+    price: 55,
+    image: "IMG_2187.JPG",
+    description: "كوب كريمي مزين برموز وملصقات بارزة وملونة."
+  },
+  {
+    id: "pottery-4",
+    name: "كوب جناح الفراشة",
+    category: "pottery",
+    categoryName: "فخاري",
+    price: 70,
+    image: "IMG_2190.JPG",
+    description: "كوب كريمي بمقبض على شكل جناح فراشة، يحمل عبارة: we all are a mess, of thousands unfinished thoughts."
+  },
+  {
+    id: "pottery-5",
+    name: "كوب ابدأ واستمر",
+    category: "pottery",
+    categoryName: "فخاري",
+    price: 65,
+    image: "IMG_2185.JPG",
+    description: "كوب أبيض مائل للرمادي دون مقبض، يحمل عبارة: ابدأ.. استمر.. تصل، وقاعدة النجاح."
+  },
+
+  // الأكواب الزجاجية
+  {
+    id: "glass-1",
+    name: "كوب الكتب والورد",
+    category: "glass",
+    categoryName: "زجاجي",
+    price: 45,
+    image: "IMG_2193.JPG",
+    description: "كوب زجاجي بغطاء خشبي ومصاصة، برسوم الكتب والورد وعبارة: Just a girl who loves..."
+  },
+  {
+    id: "glass-2",
+    name: "كوب الفراشات الوردية",
+    category: "glass",
+    categoryName: "زجاجي",
+    price: 40,
+    image: "IMG_2191.JPG",
+    description: "كوب زجاجي بمقبض وردي ورسومات الفراشات والورود، مع عبارة: You're unique and one of a kind."
+  },
+  {
+    id: "glass-3",
+    name: "كوب BOOKS & coffee",
+    category: "glass",
+    categoryName: "زجاجي",
+    price: 45,
+    image: "IMG_2194.JPG",
+    description: "كوب زجاجي بغطاء خشبي ومصاصة، لعشاق الكتب والقهوة."
+  },
+  {
+    id: "glass-4",
+    name: "كوب الكتب والكرز",
+    category: "glass",
+    categoryName: "زجاجي",
+    price: 40,
+    image: "IMG_2192.JPG",
+    description: "كوب شفاف بمقبض، مزين برسومات الكتب والورود والكرز والفيونكات."
+  },
+
+  // الأكواب المطبوعة
+  {
+    id: "printed-1",
+    name: "كوب شمسي بداخلي",
+    category: "printed",
+    categoryName: "مطبوع",
+    price: 45,
+    image: "IMG_2182.JPG",
+    description: "كوب أصفر فاتح بحافة زرقاء وشمس في الداخل، يحمل عبارة: من وجد شمسه التي بداخله لن يبحث عن أي نور في الخارج."
+  },
+  {
+    id: "printed-2",
+    name: "كوب هانت",
+    category: "printed",
+    categoryName: "مطبوع",
+    price: 40,
+    image: "IMG_2177.JPG",
+    description: "كوب أبيض برسومات الشمس والغيوم والنجوم، يحمل عبارة: هانت."
+  },
+  {
+    id: "printed-3",
+    name: "كوب المهندس",
+    category: "printed",
+    categoryName: "مطبوع",
+    price: 40,
+    image: "IMG_2176.JPG",
+    description: "كوب أبيض برسومات ورود صغيرة، يحمل عبارة: أنا مش بني آدم أنا مهندس."
+  },
+  {
+    id: "printed-4",
+    name: "كوب Megan",
+    category: "printed",
+    categoryName: "مطبوع",
+    price: 45,
+    image: "IMG_2196.JPG",
+    description: "كوب أبيض بطباعة فيونكة وردية وقلوب حمراء واسم Megan."
+  },
+
+  // الأكواب المنحوتة
+  {
+    id: "carved-1",
+    name: "مجموعة Bloom with Grace",
+    category: "carved",
+    categoryName: "منحوت",
+    price: 95,
+    image: "IMG_2188.JPG",
+    description: "مجموعة أكواب وأوانٍ بتفاصيل فنية وحروف بارزة ومحفورة، تحمل عبارة: bloom with grace."
+  },
+  {
+    id: "carved-2",
+    name: "مجموعة Strong Independent",
+    category: "carved",
+    categoryName: "منحوت",
+    price: 90,
+    image: "IMG_2178.JPG",
+    description: "مجموعة أكواب فخارية محفورة بعبارات: وحيدات، مبهرة، STRONG INDEPENDENT."
+  },
+
+  // البكجات والهدايا
+  {
+    id: "gifts-1",
+    name: "بكج يا شمسي",
+    category: "gifts",
+    categoryName: "بكجات وهدايا",
+    price: 125,
+    image: "IMG_2181.JPG",
+    description: "بكج هدية داخل صندوق، يحتوي على كوب وصحن برسمة الشمس ورسالة داخل الغطاء."
+  },
+  {
+    id: "gifts-2",
+    name: "بكج أحلام وأنس",
+    category: "gifts",
+    categoryName: "بكجات وهدايا",
+    price: 150,
+    image: "IMG_2184.JPG",
+    description: "بكج داخل صندوق كرتوني يضم كوبين بالأسماء والعبارات: أحلام وأنس."
+  },
+  {
+    id: "gifts-3",
+    name: "بكج سنوبي",
+    category: "gifts",
+    categoryName: "بكجات وهدايا",
+    price: 110,
+    image: "IMG_2195.JPG",
+    description: "كوب أبيض بمقبض أحمر مع علبته، بطباعة شخصية سنوبي."
+  },
+  {
+    id: "gifts-4",
+    name: "بكج الباستيل",
+    category: "gifts",
+    categoryName: "بكجات وهدايا",
+    price: 145,
+    image: "IMG_2197.JPG",
+    description: "مجموعة أكواب هدايا مخططة بألوان باستيل ناعمة، مع فيونكات وأسماء."
+  }
 ];
-const categoryLabels={pottery:"الأكواب الفخارية",glass:"الأكواب الزجاجية",printed:"الأكواب المطبوعة",carved:"الأكواب المنحوتة",gifts:"البكجات والهدايا"};
-let cart=JSON.parse(localStorage.getItem("mugCart")||"[]");
-const money=n=>`${n.toLocaleString("en-US")} ر.س`;
-function productCard(p){return `<article class="product-card"><div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="product-fallback">MUG</div></div><div class="product-info"><span class="product-category">${p.categoryName}</span><h3>${p.name}</h3><div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add-button" data-add="${p.id}" aria-label="أضف ${p.name} إلى السلة">+</button></div></div></article>`}
-function renderProducts(){const featured=document.getElementById("featured-products");if(featured)featured.innerHTML=products.filter(p=>["pottery","printed","gifts"].includes(p.category)).slice(0,4).map(productCard).join("");const all=document.getElementById("all-products");if(all){const active=document.querySelector(".filter-chip.active")?.dataset.filter||"all";const shown=active==="all"?products:products.filter(p=>p.category===active);all.innerHTML=shown.map(productCard).join("")||'<p class="no-results">لا توجد منتجات في هذا القسم.</p>';}}
-function saveCart(){localStorage.setItem("mugCart",JSON.stringify(cart));renderCart()}
-function addToCart(id){const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({id,qty:1});saveCart();openCart()}
-function changeQty(id,delta){const item=cart.find(x=>x.id===id);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);saveCart()}
-function renderCart(){document.querySelectorAll(".cart-count").forEach(el=>el.textContent=cart.reduce((s,x)=>s+x.qty,0));document.querySelectorAll(".cart-items").forEach(el=>{if(!cart.length){el.innerHTML='<div class="cart-empty">سلتك فارغة حاليًا<br>ابدأ باختيار منتجاتك المفضلة.</div>';return;}el.innerHTML=cart.map(x=>{const p=products.find(y=>y.id===x.id);return `<div class="cart-row"><div><h4>${p.name}</h4><small>${money(p.price)} للقطعة</small></div><div class="quantity-controls"><button data-qty="${p.id}" data-delta="-1">−</button><span>${x.qty}</span><button data-qty="${p.id}" data-delta="1">+</button></div></div>`}).join("")});const total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);document.querySelectorAll(".cart-total-value").forEach(el=>el.textContent=money(total));document.querySelectorAll(".checkout-button").forEach(el=>el.disabled=!cart.length)}
-function openCart(){document.querySelector(".cart-drawer")?.classList.add("open");document.querySelector(".cart-overlay")?.classList.add("open")}
-function closeCart(){document.querySelector(".cart-drawer")?.classList.remove("open");document.querySelector(".cart-overlay")?.classList.remove("open")}
-function checkout(){if(!cart.length)return;const lines=cart.map(x=>{const p=products.find(y=>y.id===x.id);return `• ${p.name} × ${x.qty} — ${money(p.price*x.qty)}`});const total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);const msg=`مرحبًا MUG، أرغب بطلب المنتجات التالية:\n${lines.join("\n")}\nالإجمالي التقديري: ${money(total)}\nأرجو تأكيد التوفر وتكلفة التوصيل.`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener")}
-document.addEventListener("click",e=>{const add=e.target.closest("[data-add]");if(add)addToCart(add.dataset.add);const qty=e.target.closest("[data-qty]");if(qty)changeQty(qty.dataset.qty,Number(qty.dataset.delta));if(e.target.closest("[data-open-cart]"))openCart();if(e.target.closest("[data-close-cart]")||e.target.matches("[data-cart-overlay]"))closeCart();if(e.target.closest("[data-checkout]"))checkout();const filter=e.target.closest("[data-filter]");if(filter){document.querySelectorAll(".filter-chip").forEach(b=>b.classList.remove("active"));filter.classList.add("active");renderProducts()}});
-const menu=document.querySelector(".menu-toggle");menu?.addEventListener("click",()=>{const nav=document.querySelector(".main-nav");const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open))});
-document.querySelectorAll("[data-year]").forEach(el=>el.textContent=new Date().getFullYear());
-renderProducts();renderCart();
+
+const categoryLabels = {
+  pottery: "الأكواب الفخارية",
+  glass: "الأكواب الزجاجية",
+  printed: "الأكواب المطبوعة",
+  carved: "الأكواب المنحوتة",
+  gifts: "البكجات والهدايا"
+};
+
+/* =========================
+   السلة
+========================= */
+
+let cart = [];
+
+try {
+  cart = JSON.parse(localStorage.getItem("mugCart") || "[]");
+  if (!Array.isArray(cart)) cart = [];
+} catch {
+  cart = [];
+}
+
+cart = cart.filter(item =>
+  products.some(product => product.id === item.id) &&
+  Number.isInteger(item.qty) &&
+  item.qty > 0
+);
+
+const money = number =>
+  `${number.toLocaleString("en-US")} ر.س`;
+
+/* =========================
+   بطاقة المنتج
+========================= */
+
+function productCard(product) {
+  return `
+    <article class="product-card">
+      <div class="product-image">
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
+        >
+        <div class="product-fallback">MUG</div>
+      </div>
+
+      <div class="product-info">
+        <span class="product-category">
+          ${product.categoryName}
+        </span>
+
+        <h3>${product.name}</h3>
+
+        <p class="product-description">
+          ${product.description}
+        </p>
+
+        <div class="product-bottom">
+          <span class="price">${money(product.price)}</span>
+
+          <button
+            class="add-button"
+            data-add="${product.id}"
+            aria-label="أضف ${product.name} إلى السلة"
+          >+</button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+/* =========================
+   عرض المنتجات والفلاتر
+========================= */
+
+function renderProducts() {
+  const featured = document.getElementById("featured-products");
+
+  if (featured) {
+    featured.innerHTML = products
+      .filter(product =>
+        ["pottery", "printed", "gifts"].includes(product.category)
+      )
+      .slice(0, 4)
+      .map(productCard)
+      .join("");
+  }
+
+  const all = document.getElementById("all-products");
+
+  if (all) {
+    const active =
+      document.querySelector(".filter-chip.active")?.dataset.filter || "all";
+
+    const shown = active === "all"
+      ? products
+      : products.filter(product => product.category === active);
+
+    all.innerHTML = shown.map(productCard).join("") ||
+      '<p class="no-results">لا توجد منتجات في هذا القسم.</p>';
+  }
+}
+
+/* =========================
+   حفظ وتحديث السلة
+========================= */
+
+function saveCart() {
+  localStorage.setItem("mugCart", JSON.stringify(cart));
+  renderCart();
+}
+
+function addToCart(id) {
+  const product = products.find(item => item.id === id);
+  if (!product) return;
+
+  const item = cart.find(item => item.id === id);
+
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({ id, qty: 1 });
+  }
+
+  saveCart();
+  openCart();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(item => item.id === id);
+  if (!item) return;
+
+  item.qty += delta;
+
+  if (item.qty <= 0) {
+    cart = cart.filter(item => item.id !== id);
+  }
+
+  saveCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+
+  document.querySelectorAll(".cart-count").forEach(element => {
+    element.textContent = count;
+  });
+
+  document.querySelectorAll(".cart-items").forEach(element => {
+    if (!cart.length) {
+      element.innerHTML = `
+        <div class="cart-empty">
+          سلتك فارغة حاليًا<br>
+          ابدأ باختيار منتجاتك المفضلة.
+        </div>
+      `;
+      return;
+    }
+
+    element.innerHTML = cart.map(item => {
+      const product = products.find(p => p.id === item.id);
+
+      return `
+        <div class="cart-row">
+          <div>
+            <h4>${product.name}</h4>
+            <small>${money(product.price)} للقطعة</small>
+          </div>
+
+          <div class="quantity-controls">
+            <button data-qty="${product.id}" data-delta="-1">−</button>
+            <span>${item.qty}</span>
+            <button data-qty="${product.id}" data-delta="1">+</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  });
+
+  const total = cart.reduce((sum, item) => {
+    const product = products.find(p => p.id === item.id);
+    return sum + product.price * item.qty;
+  }, 0);
+
+  document.querySelectorAll(".cart-total-value").forEach(element => {
+    element.textContent = money(total);
+  });
+
+  document.querySelectorAll(".checkout-button").forEach(element => {
+    element.disabled = !cart.length;
+  });
+}
+
+/* =========================
+   فتح وإغلاق السلة
+========================= */
+
+function openCart() {
+  document.querySelector(".cart-drawer")?.classList.add("open");
+  document.querySelector(".cart-overlay")?.classList.add("open");
+}
+
+function closeCart() {
+  document.querySelector(".cart-drawer")?.classList.remove("open");
+  document.querySelector(".cart-overlay")?.classList.remove("open");
+}
+
+/* =========================
+   الطلب عبر واتساب
+========================= */
+
+function checkout() {
+  if (!cart.length) return;
+
+  const lines = cart.map(item => {
+    const product = products.find(p => p.id === item.id);
+
+    return `• ${product.name} × ${item.qty} — ${money(product.price * item.qty)}`;
+  });
+
+  const total = cart.reduce((sum, item) => {
+    const product = products.find(p => p.id === item.id);
+    return sum + product.price * item.qty;
+  }, 0);
+
+  const message = `
+مرحبًا MUG،
+أرغب بطلب المنتجات التالية:
+
+${lines.join("\n")}
+
+الإجمالي التقديري: ${money(total)}
+
+أرجو تأكيد توفر المنتجات وتكلفة التوصيل.
+`;
+
+  const url =
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank", "noopener");
+}
+
+/* =========================
+   أحداث الأزرار
+========================= */
+
+document.addEventListener("click", event => {
+  const addButton = event.target.closest("[data-add]");
+
+  if (addButton) {
+    addToCart(addButton.dataset.add);
+  }
+
+  const quantityButton = event.target.closest("[data-qty]");
+
+  if (quantityButton) {
+    changeQty(
+      quantityButton.dataset.qty,
+      Number(quantityButton.dataset.delta)
+    );
+  }
+
+  if (event.target.closest("[data-open-cart]")) {
+    openCart();
+  }
+
+  if (
+    event.target.closest("[data-close-cart]") ||
+    event.target.matches("[data-cart-overlay]")
+  ) {
+    closeCart();
+  }
+
+  if (event.target.closest("[data-checkout]")) {
+    checkout();
+  }
+
+  const filterButton = event.target.closest("[data-filter]");
+
+  if (filterButton) {
+    document.querySelectorAll(".filter-chip").forEach(button => {
+      button.classList.remove("active");
+    });
+
+    filterButton.classList.add("active");
+    renderProducts();
+  }
+});
+
+/* =========================
+   قائمة الجوال
+========================= */
+
+const menuButton = document.querySelector(".menu-toggle");
+
+menuButton?.addEventListener("click", () => {
+  const nav = document.querySelector(".main-nav");
+  const isOpen = nav.classList.toggle("open");
+
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+/* =========================
+   السنة الحالية
+========================= */
+
+document.querySelectorAll("[data-year]").forEach(element => {
+  element.textContent = new Date().getFullYear();
+});
+
+/* =========================
+   تشغيل الموقع
+========================= */
+
+renderProducts();
+renderCart();
