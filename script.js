@@ -196,6 +196,8 @@ const categoryLabels = {
   gifts: "البكجات والهدايا"
 };
 
+const validCategories = ["all", ...Object.keys(categoryLabels)];
+
 /* =========================
    السلة
 ========================= */
@@ -261,7 +263,53 @@ function productCard(product) {
 }
 
 /* =========================
-   عرض المنتجات والفلاتر
+   الفلاتر والروابط المباشرة
+========================= */
+
+function getCategoryFromURL() {
+  const category = window.location.hash.replace("#", "").trim();
+
+  return validCategories.includes(category) ? category : "all";
+}
+
+function setActiveFilter(category) {
+  document.querySelectorAll(".filter-chip").forEach(button => {
+    const isActive = button.dataset.filter === category;
+
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function applyFilter(category, updateURL = false) {
+  const selectedCategory = validCategories.includes(category)
+    ? category
+    : "all";
+
+  setActiveFilter(selectedCategory);
+
+  const all = document.getElementById("all-products");
+
+  if (all) {
+    const shown = selectedCategory === "all"
+      ? products
+      : products.filter(product => product.category === selectedCategory);
+
+    all.innerHTML = shown.map(productCard).join("") ||
+      '<p class="no-results">لا توجد منتجات في هذا القسم.</p>';
+  }
+
+  if (updateURL && document.getElementById("all-products")) {
+    const newURL = selectedCategory === "all"
+      ? window.location.pathname + window.location.search
+      : `${window.location.pathname}${window.location.search}#${selectedCategory}`;
+
+    history.replaceState(null, "", newURL);
+  }
+}
+
+/* =========================
+   عرض المنتجات
 ========================= */
 
 function renderProducts() {
@@ -280,15 +328,7 @@ function renderProducts() {
   const all = document.getElementById("all-products");
 
   if (all) {
-    const active =
-      document.querySelector(".filter-chip.active")?.dataset.filter || "all";
-
-    const shown = active === "all"
-      ? products
-      : products.filter(product => product.category === active);
-
-    all.innerHTML = shown.map(productCard).join("") ||
-      '<p class="no-results">لا توجد منتجات في هذا القسم.</p>';
+    applyFilter(getCategoryFromURL());
   }
 }
 
@@ -469,12 +509,17 @@ document.addEventListener("click", event => {
   const filterButton = event.target.closest("[data-filter]");
 
   if (filterButton) {
-    document.querySelectorAll(".filter-chip").forEach(button => {
-      button.classList.remove("active");
-    });
+    applyFilter(filterButton.dataset.filter, true);
+  }
+});
 
-    filterButton.classList.add("active");
-    renderProducts();
+/* =========================
+   دعم الرجوع والتنقل بالروابط
+========================= */
+
+window.addEventListener("hashchange", () => {
+  if (document.getElementById("all-products")) {
+    applyFilter(getCategoryFromURL());
   }
 });
 
